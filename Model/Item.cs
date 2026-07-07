@@ -2,6 +2,8 @@
 using System;
 using System.Collections;
 using System.Xml.Linq;
+namespace ConsoleGameFramework.Models;
+
 enum TYPE
 {
     검,
@@ -19,21 +21,21 @@ public class Item
     public int Hp { get; private set; }
     public int MaxMp { get; private set; }
     public int Mp { get; private set; }
-}
-public Item(string name, string type,int maxHp, int maxMp, int attack, int defense)
-{
-    Name = name;
-    this.Type = type
-    MaxHp = maxHp;
-    Hp = maxHp;
-    MaxMp = maxMp;
-    Mp = maxMp;
-    Attack = attack;
-    Defense = defense;
-}
-public class WoodSword : Item
-{
-    public WoodSword(string name) : base("나무 검",TYPE.검,0,0,10,0)
+    public Item(string name, string type, int maxHp, int maxMp, int attack, int defense)
     {
+        Name = name;
+        this.Type = type;
+        MaxHp = maxHp;
+        Hp = maxHp;
+        MaxMp = maxMp;
+        Mp = maxMp;
+        Attack = attack;
+        Defense = defense;
     }
 }
+//public class WoodSword : Item
+//{
+//    public WoodSword(string name) : base("나무 검", TYPE.검, 0, 0, 10, 0)
+//    {
+//    }
+//}

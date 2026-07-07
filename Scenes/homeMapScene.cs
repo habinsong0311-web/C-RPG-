@@ -42,7 +42,9 @@ public class playerHomeMapScene : SceneBase
         else if (key.Key == ConsoleKey.DownArrow) moveY++;
         else if (key.Key == ConsoleKey.LeftArrow) moveX--;
         else if (key.Key == ConsoleKey.RightArrow) moveX++;
-        else if (key.Key == ConsoleKey.X) GoTo(context, SceneKey.MainMenu);
+        //else if (key.Key == ConsoleKey.X) GoTo(context, SceneKey.MainMenu);
+          
+        else if (key.Key == ConsoleKey.X) Menu.Push(SceneKey.MainMenu);
         if (playerHomeMap[moveY, moveX] != wall)
         {
             playerY = moveY;

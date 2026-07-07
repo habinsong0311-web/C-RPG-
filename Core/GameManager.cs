@@ -102,4 +102,18 @@ public class GameManager
     {
         Context.IsRunning = false;
     }
+    private readonly Stack<SceneKey> Menu = new();
+    public void PushScene(SceneKey nowScene, SceneKey nextScene)
+    {
+        //현재 씬으로 생성
+        Menu.Push(nowScene);
+        //그리고 다음 메뉴 생성
+        Menu.Push(nextScene);
+        //현재 씬을 씬으로 만듬
+        //키를 입렵하면 다음창이뜨게만듬
+        //위 스택에 집어넣는식
+        //Push를 사용해서 만드는거 다시 X를 누르면 팝으로 돌아오기
+        //
+    }
+
 }

@@ -32,7 +32,9 @@ public class MainMenu : SceneBase
     //게임종료
     //플레이어 상태창을 만들어 보여준다
     public override void HandleInput(GameContext context)
-    { }
+    {
+        Console.ReadLine();
+    }
 
 
 

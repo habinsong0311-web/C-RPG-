@@ -70,8 +70,8 @@ public class GameContext
         Console.WriteLine($"{Player.Name} / Level : {Player.Level} /직업: {Player.Job}");
         Console.WriteLine($"HP:{Player.Hp} / {Player.MaxHp} MP:{Player.Mp} / {Player.MaxMp}");
         Console.WriteLine($"현재 경험치:{Player.Exp} / {Player.MaxExp}");
-        Console.WriteLine($"소지금:{Player.Money}원");
         Console.WriteLine($"공격력:{Player.Attack} 방어력:{Player.Defense}");
+        Console.WriteLine($"소지금:{Player.Money}원");
 
 
     }
