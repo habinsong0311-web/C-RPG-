@@ -8,10 +8,7 @@ public class Equipment : SceneBase
     public override SceneKey Key => SceneKey.Equipment;
     public override void Render(GameContext context)
     {
-        context.Game.AddEquipment(new WoodSword());
-        context.Game.AddEquipment(new WoodShield());
-        context.Game.AddEquipment(new ClothClothes());
-        context.Game.RemoveEquipment(new ClothClothes());
+
         Console.Clear();
         ConsoleUI.WriteTitle("장비창", "X키 입력으로 되돌아가기");
         context.PrintStat();
@@ -27,5 +24,29 @@ public class Equipment : SceneBase
             context.Game.PopScene();
             return;
         }
+        if (int.TryParse(input, out int choice))
+        {
+            if (choice > 0 && choice <= 3)
+            {
+                switch (choice)
+                {
+                    case 1:
+                        {
+                            context.Game.RemoveEquipmentChoice(context.Game.EquippedWeapon);
+                        }
+                        break;
+                    case 2:
+                        context.Game.RemoveEquipmentChoice(context.Game.EquippedShield);
+                        break;
+                    case 3:
+                        context.Game.RemoveEquipmentChoice(context.Game.EquippedArmor);
+                        break;
+
+                }
+
+
+            }
+        }
     }
 }
+

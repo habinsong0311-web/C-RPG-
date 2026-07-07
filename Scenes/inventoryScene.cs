@@ -30,7 +30,7 @@ public class inventoryScene : SceneBase
                 Item item = context.Game.inventory[choice];
                 Console.Clear();
                 context.Game.PrintItem(item);
-                Console.ReadKey();
+                context.Game.ItemEquipment(item);
             }
             else
             {

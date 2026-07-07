@@ -24,6 +24,33 @@ public class Character
         Attack = attack;
         Defense = defense;
     }
+    public void ItemStatusUp(Item item)
+    {
+        Hp += item.MaxHp;
+        MaxHp += item.MaxHp;
+        Mp += item.MaxMp;
+        MaxMp += item.MaxMp;
+        Attack += item.Attack;
+        Defense += item.Defense;
+    }
+    public void ItemStatusDown(Item item)
+    {
+        Hp -= item.MaxHp;
+        if(Hp <= 0)
+        {
+            Hp = 1;
+        }
+        MaxHp -= item.MaxHp;
+        Mp -= item.MaxMp;
+        if(Mp < 0)
+        {
+            Mp = 0;
+        }
+        MaxMp -= item.MaxMp;
+        Attack -= item.Attack;
+        Defense -= item.Defense;
+
+    }
 
     public void TakeDamage(int damage)
     {

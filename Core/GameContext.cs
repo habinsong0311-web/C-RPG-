@@ -73,15 +73,7 @@ public class GameContext
         Console.WriteLine($"공격력:{Player.Attack} 방어력:{Player.Defense}");
         Console.WriteLine($"소지금:{Player.Money}원");
     }
-    public void ItemEquipment(Item item)
-    {
-        Player.MaxHp += item.MaxHp;
-        Player.MaxMp += item.MaxMp;
-        Player.Attack += item.Attack;
-        Player.Defense += item.Defense;
-
-
-    }
+    
 
 
 }

@@ -135,31 +135,106 @@ public class GameManager
         }
     }
 
-    public void AddItem(Item itme) // 인벤토리에 아이템 추가
+    public void AddItem(Item item) // 인벤토리에 아이템 추가
     {
-        inventory.Add(itme);
+        inventory.Add(item);
+    }
+    public void RemoveItem(Item item) // 인벤토리에 아이템 삭제
+    {
+        inventory.Remove(item);
     }
 
+    //ItemEquipment
+    //RemoveEquipment
     public void PrintItem(Item item)
     {
         Console.WriteLine($"{item.Name} / 타입 : {item.Type}");
         Console.WriteLine($"HP {item.MaxHp} / MP{item.MaxMp}");
         Console.WriteLine($"공격력 {item.Attack} / 방어력{item.Defense}");
         Console.WriteLine($"{item.Description}");
+    }
+    public void ItemEquipment(Item item)
+    {
         if (item.Type == TYPE.소모품)
         {
+            Console.WriteLine("================================");
             Console.WriteLine("사용하시겠습니까?\n1.Yes / 2.NO");
         }
         else if (item.Type == TYPE.기타)
         {
+            Console.WriteLine("================================");
         }
         else
         {
             Console.WriteLine("================================");
             Console.WriteLine("착용하시겠습니까?\n1.Yes / 2.NO");
-        }
+            string input = Console.ReadLine();
+            if (input == "1")
+            {
+                if (item.Type == TYPE.방패)
+                {
+                    if (EquippedShield != null)
+                    {
+                        SwapEquipment(EquippedShield, item);
+                    }
+                    else if (EquippedShield == null)
+                    {
+                        AddEquipment(item);
+                        Context.Player.ItemStatusUp(item);
+                        RemoveItem(item);
+                    }
+                }
+                else if (item.Type == TYPE.옷)
+                {
+                    if (EquippedArmor != null)
+                    {
 
+                        SwapEquipment(EquippedArmor, item);
+                    }
+                    else if(EquippedArmor == null)
+                    {
+                        AddEquipment(item);
+                        Context.Player.ItemStatusUp(item);
+                        RemoveItem(item);
+                    }
+
+                }
+                else
+                {
+                    if (EquippedWeapon != null)
+                    {
+                        SwapEquipment(EquippedWeapon, item);
+                    }
+                    else if(EquippedWeapon == null)
+                    {
+                        AddEquipment(item);
+                        Context.Player.ItemStatusUp(item);
+                        RemoveItem(item);
+                    }
+                   
+                }
+                return;
+            }
+            else if (input == "2")
+            {
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("잘못 입력된 키입니다");
+            }
+
+        }
     }
+    public void SwapEquipment(Item itemA, Item itemB)
+    {
+        Context.Player.ItemStatusDown(itemA);
+        Context.Player.ItemStatusUp(itemB);
+        inventory.Add(itemA);
+        AddEquipment(itemB);
+        inventory.Remove(itemB);
+    }
+
     public Item? EquippedWeapon { get; private set; }
     public Item? EquippedShield { get; private set; }
     public Item? EquippedArmor { get; private set; }
@@ -168,39 +243,39 @@ public class GameManager
     public void PrintEquipment()// 장비를 출력하는 함수
     {
         ConsoleUI.WriteSubtitle("착용중인 장비");
-        Console.WriteLine($"무기 : {(EquippedWeapon == null ? "장착아이템이 없습니다." : EquippedWeapon.Name)}");
-        Console.WriteLine($"방패 : {(EquippedShield == null ? "장착아이템이 없습니다." : EquippedShield.Name)}");
-        Console.WriteLine($"무기 : {(EquippedArmor == null ? "장착아이템이 없습니다." : EquippedArmor.Name)}");
+        Console.WriteLine($"1.무기 : {(EquippedWeapon == null ? "장착아이템이 없습니다." : EquippedWeapon.Name)}");
+        Console.WriteLine($"2.방패 : {(EquippedShield == null ? "장착아이템이 없습니다." : EquippedShield.Name)}");
+        Console.WriteLine($"3.갑옷 : {(EquippedArmor == null ? "장착아이템이 없습니다." : EquippedArmor.Name)}");
 
 
     }
-    public void AddEquipment(Item itme)
+    public void AddEquipment(Item item)
     {
-        if (itme.Type == TYPE.방패)
+        if (item.Type == TYPE.방패)
         {
-            EquippedShield = itme;
+            EquippedShield = item;
             return;
         }
-        else if (itme.Type == TYPE.옷)
+        else if (item.Type == TYPE.옷)
         {
-            EquippedArmor = itme;
+            EquippedArmor = item;
             return;
         }
         else
         {
-            EquippedWeapon = itme;
+            EquippedWeapon = item;
             return;
         }
 
     }
-    public void RemoveEquipment(Item itme)
+    public void RemoveEquipment(Item item)
     {
-        if (itme.Type == TYPE.방패)
+        if (item.Type == TYPE.방패)
         {
             EquippedShield = null;
             return;
         }
-        else if (itme.Type == TYPE.옷)
+        else if (item.Type == TYPE.옷)
         {
             EquippedArmor = null;
             return;
@@ -210,8 +285,34 @@ public class GameManager
             EquippedWeapon = null;
             return;
         }
-
     }
+    public void RemoveEquipmentChoice(Item item)
+    {
+        Console.Clear();
+        if (item == null)
+        {
+            Console.WriteLine("장착 중인 무기가 없습니다.");
+            Console.ReadKey(true);
+            return;
+        }
+        Console.WriteLine($"현재 {item.Name}을(를) 장착중입니다 해제하시겠습니까?");
+        Console.WriteLine($"1 Yes / 2. No");
+        string inputA = Console.ReadLine();
+        if (inputA == "1")
+        {
+            AddItem(item);
+            RemoveEquipment(item);
+        }
+        else if (inputA == "2")
+        {
+            Console.ReadLine();
+        }
+        else
+        {
+            Console.WriteLine("잘못 입력된 키입니다");
+        }
+    }
+
 }
 
 

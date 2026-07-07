@@ -73,13 +73,13 @@ public class ClothClothes : Item
 };
 public class HpPotion : Item
 {
-    public HpPotion() : base("HP포션",TYPE.소모품, 0, 0, 0, 0, "체력을 회복시켜주는 포션이다\n사용시 HP를 50 회복한다")
+    public HpPotion() : base("HP포션",TYPE.소모품, 50, 0, 0, 0, "체력을 회복시켜주는 포션이다\n사용시 HP를 50 회복한다")
     {
     }
 };
 public class MpPotion : Item
 {
-    public MpPotion() : base("MP포션",TYPE.소모품, 0, 0, 0, 0, "마나를 회복시켜주는 포션이다\n사용시 MP를 50 회복한다")
+    public MpPotion() : base("MP포션",TYPE.소모품, 0, 50, 0, 0, "마나를 회복시켜주는 포션이다\n사용시 MP를 50 회복한다")
     {
     }
 };
