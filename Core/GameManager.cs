@@ -302,6 +302,7 @@ public class GameManager
         {
             AddItem(item);
             RemoveEquipment(item);
+            Context.Player.ItemStatusDown(item);
         }
         else if (inputA == "2")
         {
