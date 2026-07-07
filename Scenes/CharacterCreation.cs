@@ -39,18 +39,31 @@ public class CharacterCreationScene : SceneBase
             case 1:
                 context.AddLog($"{name} 님이 전사를 선택했습니다.");
                 context.Player = new Warrior(name);
+                context.Game.AddItem(new WoodSword());
+                context.Game.AddItem(new WoodShield());
+                context.Game.AddItem(new ClothClothes());
+                context.Game.AddItem(new HpPotion());
+                context.Game.AddItem(new MpPotion());
                 GoTo(context, SceneKey.playerHomeMap);
                 break;
 
             case 2:
                 context.AddLog($"{name} 님이 암살자를 선택했습니다.");
                 context.Player = new Assassin(name);
+                context.Game.AddItem(new WoodDagger());
+                context.Game.AddItem(new ClothClothes());
+                context.Game.AddItem(new HpPotion());
+                context.Game.AddItem(new MpPotion());
                 GoTo(context, SceneKey.playerHomeMap);
                 break;
 
             case 3:
                 context.AddLog($"{name} 님이 마법사를 선택했습니다.");
                 context.Player = new Mage(name);
+                context.Game.AddItem(new Woodwand());
+                context.Game.AddItem(new ClothClothes());
+                context.Game.AddItem(new HpPotion());
+                context.Game.AddItem(new MpPotion());
                 GoTo(context, SceneKey.playerHomeMap);
                 break;
 

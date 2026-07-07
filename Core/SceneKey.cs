@@ -14,6 +14,8 @@ public enum SceneKey
     Sample,
     playerHomeMap,
     CharacterCreation,
-    MainMenu
+    MainMenu,
+    inventory,
+    Equipment
 
 }

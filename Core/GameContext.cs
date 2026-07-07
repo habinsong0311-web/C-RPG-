@@ -59,7 +59,7 @@ public class GameContext
             Logs.RemoveAt(0);
         }
     }
-    public Player? Player { get; set; }
+    public Player? Player { get; set;  }
     public void PrintStat()
     {
         if (Player == null)
@@ -72,6 +72,13 @@ public class GameContext
         Console.WriteLine($"현재 경험치:{Player.Exp} / {Player.MaxExp}");
         Console.WriteLine($"공격력:{Player.Attack} 방어력:{Player.Defense}");
         Console.WriteLine($"소지금:{Player.Money}원");
+    }
+    public void ItemEquipment(Item item)
+    {
+        Player.MaxHp += item.MaxHp;
+        Player.MaxMp += item.MaxMp;
+        Player.Attack += item.Attack;
+        Player.Defense += item.Defense;
 
 
     }

@@ -43,8 +43,11 @@ public class playerHomeMapScene : SceneBase
         else if (key.Key == ConsoleKey.LeftArrow) moveX--;
         else if (key.Key == ConsoleKey.RightArrow) moveX++;
         //else if (key.Key == ConsoleKey.X) GoTo(context, SceneKey.MainMenu);
-          
-        else if (key.Key == ConsoleKey.X) Menu.Push(SceneKey.MainMenu);
+        else if (key.Key == ConsoleKey.X)
+        {
+            context.Game.PushScene(SceneKey.MainMenu);
+            return;
+        }
         if (playerHomeMap[moveY, moveX] != wall)
         {
             playerY = moveY;

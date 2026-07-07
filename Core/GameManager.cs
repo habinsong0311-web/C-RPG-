@@ -1,5 +1,9 @@
+using ConsoleGameFramework.Models;
 using ConsoleGameFramework.Scenes;
 using ConsoleGameFramework.UI;
+using System.ComponentModel;
+using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ConsoleGameFramework.Core;
 
@@ -45,6 +49,9 @@ public class GameManager
         AddScene(new CharacterCreationScene());
         AddScene(new playerHomeMapScene());
         AddScene(new MainMenu());
+        AddScene(new inventoryScene());
+        AddScene(new Equipment());
+
 
 
     }
@@ -103,17 +110,109 @@ public class GameManager
         Context.IsRunning = false;
     }
     private readonly Stack<SceneKey> Menu = new();
-    public void PushScene(SceneKey nowScene, SceneKey nextScene)
+    public void PushScene(SceneKey nextScene)//다음창으로 넘어가는 스택
     {
-        //현재 씬으로 생성
-        Menu.Push(nowScene);
-        //그리고 다음 메뉴 생성
-        Menu.Push(nextScene);
-        //현재 씬을 씬으로 만듬
-        //키를 입렵하면 다음창이뜨게만듬
-        //위 스택에 집어넣는식
-        //Push를 사용해서 만드는거 다시 X를 누르면 팝으로 돌아오기
-        //
+        Menu.Push(_currentScene.Key);
+        ChangeScene(nextScene);
+    }
+    public void PopScene() // 되돌아가는 함수
+    {
+        SceneKey backScene = Menu.Pop();
+        ChangeScene(backScene);
     }
 
+
+
+    public readonly List<Item> inventory = new List<Item>();//인벤토리 구현화
+
+    public void PrintInventory()// 인벤토리를 출력하는 함수
+    {
+
+        ConsoleUI.WriteSubtitle("인벤토리 목록");
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            Console.WriteLine($"{i}.{inventory[i].Name}");
+        }
+    }
+
+    public void AddItem(Item itme) // 인벤토리에 아이템 추가
+    {
+        inventory.Add(itme);
+    }
+
+    public void PrintItem(Item item)
+    {
+        Console.WriteLine($"{item.Name} / 타입 : {item.Type}");
+        Console.WriteLine($"HP {item.MaxHp} / MP{item.MaxMp}");
+        Console.WriteLine($"공격력 {item.Attack} / 방어력{item.Defense}");
+        Console.WriteLine($"{item.Description}");
+        if (item.Type == TYPE.소모품)
+        {
+            Console.WriteLine("사용하시겠습니까?\n1.Yes / 2.NO");
+        }
+        else if (item.Type == TYPE.기타)
+        {
+        }
+        else
+        {
+            Console.WriteLine("================================");
+            Console.WriteLine("착용하시겠습니까?\n1.Yes / 2.NO");
+        }
+
+    }
+    public Item? EquippedWeapon { get; private set; }
+    public Item? EquippedShield { get; private set; }
+    public Item? EquippedArmor { get; private set; }
+
+
+    public void PrintEquipment()// 장비를 출력하는 함수
+    {
+        ConsoleUI.WriteSubtitle("착용중인 장비");
+        Console.WriteLine($"무기 : {(EquippedWeapon == null ? "장착아이템이 없습니다." : EquippedWeapon.Name)}");
+        Console.WriteLine($"방패 : {(EquippedShield == null ? "장착아이템이 없습니다." : EquippedShield.Name)}");
+        Console.WriteLine($"무기 : {(EquippedArmor == null ? "장착아이템이 없습니다." : EquippedArmor.Name)}");
+
+
+    }
+    public void AddEquipment(Item itme)
+    {
+        if (itme.Type == TYPE.방패)
+        {
+            EquippedShield = itme;
+            return;
+        }
+        else if (itme.Type == TYPE.옷)
+        {
+            EquippedArmor = itme;
+            return;
+        }
+        else
+        {
+            EquippedWeapon = itme;
+            return;
+        }
+
+    }
+    public void RemoveEquipment(Item itme)
+    {
+        if (itme.Type == TYPE.방패)
+        {
+            EquippedShield = null;
+            return;
+        }
+        else if (itme.Type == TYPE.옷)
+        {
+            EquippedArmor = null;
+            return;
+        }
+        else
+        {
+            EquippedWeapon = null;
+            return;
+        }
+
+    }
 }
+
+
+
