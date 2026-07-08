@@ -47,7 +47,15 @@ public class LabyrinthVillageScene : SceneBase
             context.Game.PushScene(SceneKey.MainMenu);
             return;
         }
-        if (LabyrinthVillageMap[moveY, moveX] != wall)
+        if (LabyrinthVillageMap[moveY, moveX] == door)
+        {
+            GoTo(context, SceneKey.playerHomeMap);
+        }
+        else if (LabyrinthVillageMap[moveY, moveX] == LabyrinthIngress)
+        {
+
+        }
+        else if (LabyrinthVillageMap[moveY, moveX] != wall)
         {
             playerY = moveY;
             playerX = moveX;

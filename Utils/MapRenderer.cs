@@ -33,6 +33,9 @@ public class MapRenderer
                         case fenceB:
                             Console.Write("ㅡ");
                             break;
+                        case LabyrinthIngress:
+                            Console.Write("E");
+                            break;
 
                     }
 
