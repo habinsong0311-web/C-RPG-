@@ -42,6 +42,10 @@ public class LabyrinthVillageScene : SceneBase
         else if (key.Key == ConsoleKey.DownArrow) moveY++;
         else if (key.Key == ConsoleKey.LeftArrow) moveX--;
         else if (key.Key == ConsoleKey.RightArrow) moveX++;
+        if (moveY < 0) moveY = 0;
+        if (moveX < 0) moveX = 0;
+        if (moveY >= LabyrinthVillageMap.GetLength(0)) moveY -= 1;
+        if (moveX >= LabyrinthVillageMap.GetLength(1)) moveX -= 1;
         else if (key.Key == ConsoleKey.X)
         {
             context.Game.PushScene(SceneKey.MainMenu);
@@ -53,7 +57,7 @@ public class LabyrinthVillageScene : SceneBase
         }
         else if (LabyrinthVillageMap[moveY, moveX] == LabyrinthIngress)
         {
-
+            GoTo(context, SceneKey.Labyrinth1FScene);
         }
         else if (LabyrinthVillageMap[moveY, moveX] != wall)
         {

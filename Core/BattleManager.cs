@@ -22,9 +22,14 @@ public class BattleManager
 
 	// 적
 	public Enemy Enemy { get; private set; }
+    public void StartBattle(Enemy enemy)
+    {
+        Enemy = enemy;
+    }
 
-	// 플레이어와 적을 생성하고, 초기화하는 함수.
-	public void StartBattleInit(string name)
+
+    // 플레이어와 적을 생성하고, 초기화하는 함수.
+    public void StartBattleInit(string name)
 	{
 		Player = new Player(name,100,10,10,10);
 		Enemy = new Enemy("고블린",40,5,5,5);
@@ -35,22 +40,20 @@ public class BattleManager
 		Victory,
 		Defeat
 	}
-	// 플레이어가 적을 공격하는 함수
-	public BattleOutcome PlayerAttack()
-	{
-		Enemy.TakeDamage(Player.Attack);
+    // 플레이어가 적을 공격하는 함수
+    public BattleOutcome PlayerAttack(Player player)
+    {
+        Enemy.TakeDamage(player.Attack);
 
-		if(!Enemy.IsAlive)
-		{
-			return BattleOutcome.Victory;
-		}
-		// 적이 플레이어를 때리는 함수
-		Player.TakeDamage(Enemy.Attack);
+        if (!Enemy.IsAlive)
+            return BattleOutcome.Victory;
 
-		if (Player.IsAlive)
-			return BattleOutcome.Continuing;
-		else
-			return BattleOutcome.Defeat;
-	}
+        player.TakeDamage(Enemy.Attack);
+
+        if (!player.IsAlive)
+            return BattleOutcome.Defeat;
+
+        return BattleOutcome.Continuing;
+    }
 
 }

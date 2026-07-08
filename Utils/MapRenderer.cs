@@ -19,7 +19,7 @@ public class MapRenderer
                     switch (map[Y, X])
                     {
                         case wall:
-                            Console.Write("■");
+                            Console.Write("#");
                             break;
                         case floor:
                             Console.Write(" ");
@@ -35,6 +35,28 @@ public class MapRenderer
                             break;
                         case LabyrinthIngress:
                             Console.Write("E");
+                            break;
+                        case Up:
+                            Console.Write("U");
+                            break;
+                        case Down:
+                            Console.Write("D");
+                            break;
+                        case monster:
+                        case slime:
+                        case goblin:
+                        case skeleton:
+                        case goblinMage:
+                        case hobgoblin:
+                        case orc:
+                        case gargoyle:
+                        case waterSpirit:
+                            Console.Write("M");
+                            break;
+                        case dragon:
+                        case littleDevil:
+                        case gatekeeperGolem:
+                            Console.Write("B");
                             break;
 
                     }

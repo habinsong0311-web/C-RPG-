@@ -13,6 +13,7 @@ public enum TYPE
     활,
     완드,
     소모품,
+    전리품,
     기타
 
 }
@@ -40,7 +41,48 @@ public class Item
         Description = description;
     }
 }
-
+public class Loot : Item
+{
+    public int SellMoney = 0;
+    public Loot(string name, TYPE type, string description) : base(name, type, 0,0,0, 0, description)
+    { 
+    }
+}
+public class SlimeCore : Loot
+{
+    public SlimeCore() : base("슬라임의 핵",TYPE.전리품,"슬라임이 죽고 남김 슬라임의 핵이다 상점에 팔면 돈을 준다")
+    {
+        SellMoney = 10;
+    }
+}
+public class GoblinEar : Loot
+{
+    public GoblinEar() : base("고블린의 귀",TYPE.전리품,"죽은 고블린의 귀이다 상점에 팔면 돈을 준다")
+    {
+        SellMoney = 15;
+    }
+}
+public class Skeletonbone : Loot
+{
+    public Skeletonbone() : base("뼈다귀",TYPE.전리품,"스켈레톤을 잡고 나온 뼈다귀이다 상점에 팔면 돈을 준다")
+    {
+        SellMoney = 20;
+    }
+}
+public class CrudeCane : Loot
+{
+    public CrudeCane() : base("조잡한지팡이", TYPE.전리품, "고블린메이지가 사용하는 조잡한 지팡이다 상점에 팔면 돈을 준다")
+    {
+        SellMoney = 30;
+    }
+}
+public class CrudeSword : Loot
+{
+    public CrudeSword() : base("조잡한검", TYPE.전리품, "홉고블린이 사용하는 조잡한 검이다 상점에 팔면 돈을 준다")
+    {
+        SellMoney = 40;
+    }
+}
 public class WoodSword : Item
 {
     public WoodSword() : base("나무 검", TYPE.한손검, 0, 0, 10, 0, "나무로 만든 낡은 나무 검이다\n착용시 공격력이 10증가한다")

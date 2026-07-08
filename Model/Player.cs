@@ -10,7 +10,7 @@ public class Player : Character
 
     public int Exp { get; set; } = 0;
 
-    public int MaxExp { get; set; } = 100;
+    public int MaxExp { get; set; } = 5;
 
     public int Money { get; set; } = 500;
 

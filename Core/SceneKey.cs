@@ -17,6 +17,17 @@ public enum SceneKey
     MainMenu,
     inventory,
     Equipment,
-    LabyrinthVillage
+    LabyrinthVillage,
+    Labyrinth1FScene,
+    Labyrinth2FScene,
+    Labyrinth3FScene,
+    Labyrinth4FScene,
+    Labyrinth5FScene,
+    Labyrinth6FScene,
+    Labyrinth7FScene,
+    Labyrinth8FScene,
+    Labyrinth9FScene,
+    Labyrinth10FScene,
+
 
 }

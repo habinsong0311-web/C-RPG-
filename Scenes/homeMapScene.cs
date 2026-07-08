@@ -45,13 +45,16 @@ public class playerHomeMapScene : SceneBase
         else if (key.Key == ConsoleKey.DownArrow) moveY++;
         else if (key.Key == ConsoleKey.LeftArrow) moveX--;
         else if (key.Key == ConsoleKey.RightArrow) moveX++;
-        //else if (key.Key == ConsoleKey.X) GoTo(context, SceneKey.MainMenu);
+        if (moveY < 0) moveY = 0;
+        if (moveX < 0) moveX = 0;
+        if (moveY > playerHomeMap.GetLength(0)) moveY -= 1;
+        if (moveX >= playerHomeMap.GetLength(1)) moveX -= 1;
         else if (key.Key == ConsoleKey.X)
         {
             context.Game.PushScene(SceneKey.MainMenu);
             return;
         }
-        if(playerHomeMap[moveY, moveX] == door)
+        if (playerHomeMap[moveY, moveX] == door)
         {
             GoTo(context, SceneKey.LabyrinthVillage);
         }
@@ -60,34 +63,7 @@ public class playerHomeMapScene : SceneBase
             playerY = moveY;
             playerX = moveX;
         }
-
-
-
     }
-
-
-
-
-
 }
-//{
-//    { wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall },
-//        { wall,floor,floor,floor,wall,floor,floor,wall,wall,wall,wall,wall,wall,wall,wall },
-//        { wall,floor,floor,floor,wall,floor,floor,wall,wall,wall,wall,wall,wall,wall,wall },
-//        { wall,floor,floor,floor,floor,floor,floor,wall,wall,wall,wall,wall,wall,wall,wall },
-//        { wall,floor,floor,floor,wall,floor,floor,wall,wall,wall,wall,wall,wall,wall,wall },
-//        { wall,wall,wall,wall,wall,floor,floor,wall,wall,wall,wall,wall,wall,wall,wall },
-//        { wall,floor,floor,floor,wall,floor,floor,wall,wall,wall,wall,wall,wall,wall,wall },
-//        { wall,floor,floor,floor,wall,floor,floor,wall,wall,wall,wall,wall,wall,wall,wall },
-//        { wall,floor,floor,floor,floor,floor,floor,wall,wall,wall,wall,wall,wall,wall,wall },
-//        { wall,floor,floor,floor,wall,floor,floor,wall,wall,wall,wall,wall,wall,wall,wall },
-//        { wall,wall,wall,wall,wall,floor,floor,floor,floor,floor,fenceA,floor,floor,floor,wall },
-//        { wall,floor,floor,floor,wall,floor,floor,floor,floor,floor,fenceA,floor,floor,floor,wall },
-//        { wall,floor,floor,floor,wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
-//        { wall,floor,floor,floor,floor,floor,floor,floor,floor,floor ,fenceA,floor,floor,floor,wall},
-//        { wall,floor,floor,floor,wall,floor,floor,floor,floor,floor,fenceA,floor,floor,floor,wall },
-//        { wall,wall,wall,wall,wall,floor,floor,floor,floor,wall,wall,wall,wall,wall,wall },
-//        }
-//;
 
 

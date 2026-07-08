@@ -59,7 +59,7 @@ public class GameContext
             Logs.RemoveAt(0);
         }
     }
-    public Player? Player { get; set;  }
+    public Player? Player { get; set; }
     public void PrintStat()
     {
         if (Player == null)
@@ -72,6 +72,19 @@ public class GameContext
         Console.WriteLine($"현재 경험치:{Player.Exp} / {Player.MaxExp}");
         Console.WriteLine($"공격력:{Player.Attack} 방어력:{Player.Defense}");
         Console.WriteLine($"소지금:{Player.Money}원");
+    }
+    public void PlayerLevelUp()
+    {
+        if(Player.Exp >= Player.MaxExp)
+        {
+            Player.Exp -= Player.MaxExp;
+            Player.MaxExp *= 2;
+            Player.UpStatus();
+            Player.FullHeal();
+            Console.WriteLine($"레벨업!\n레벨이 {Player.Level} -> {Player.Level + 1}이 되었습니다");
+            Player.Level += 1;
+        }
+        return;
     }
 
 

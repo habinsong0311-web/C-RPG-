@@ -1,4 +1,8 @@
-﻿using System;
+﻿using ConsoleGameFramework.Core;
+using ConsoleGameFramework.Models;
+using ConsoleGameFramework.UI;
+using System;
+using System.Numerics;
 
 namespace ConsoleGameFramework.Models;
 
@@ -52,8 +56,42 @@ public class Character
 
     }
 
-    public void TakeDamage(int damage)
+    public int TakeDamage(int damage)
     {
-        Hp = Math.Max(0, Hp - damage);
+        int realDamage = Math.Max(0, damage - Defense);
+        if (Hp < 0)
+        {
+            Hp = 0;
+        }
+        Hp -= realDamage;
+        return realDamage;
+    }
+    public void FullHeal()
+    {
+        Hp = MaxHp;
+        Mp = MaxMp;
+    }
+    public void UpStatus()
+    {
+        MaxHp += 50;
+        MaxMp += 50;
+        Attack += 5;
+        Defense += 3;
+    }
+    public void UseHpPotion()
+    {
+        Hp += 50;
+        if (Hp > MaxHp)
+        {
+            Hp = MaxHp;
+        }
+    }
+    public void UseMpPotion()
+    {
+        Mp += 50;
+        if (Mp > MaxMp)
+        {
+            Mp = MaxMp;
+        }
     }
 }

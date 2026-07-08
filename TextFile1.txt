@@ -1,0 +1,43 @@
+using ConsoleGameFramework.Core;
+using ConsoleGameFramework.Models;
+using ConsoleGameFramework.UI;
+using System.Text;
+using static ConsoleGameFramework.Models.MapTileType;
+
+public class ? : SceneBase
+{
+ public class ? : SceneBase
+{
+    public override SceneKey Key => SceneKey.?;
+    private MapTileType[,] ? =
+    {
+        { wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall },
+        {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
+        {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
+        {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
+        {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
+        {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
+        {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
+        {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
+        {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
+        {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
+        {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
+        {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
+        {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
+        {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
+        { wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall },
+    };
+    private int playerX = 7;
+    private int playerY = 13;
+    
+    public override void Render(GameContext context)
+    {
+        Console.Clear();
+        ConsoleUI.WriteTitle("미궁?층");
+        MapRenderer.PrintMap(?, playerY, playerX);
+    }
+    public override void HandleInput(GameContext context)
+    {
+    }
+}
+
