@@ -10,7 +10,7 @@ public class playerHomeMapScene : SceneBase
 
     private MapTileType[,] playerHomeMap =
         {
-        { fenceB,fenceB,fenceB,fenceB,fenceB,fenceB,fenceB,fenceB,fenceB,fenceB,fenceB,fenceB,fenceB,fenceB,fenceB },
+        { wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall,wall },
         { wall,floor,floor,floor,wall,floor,floor,wall,wall,wall,wall,wall,wall,wall,wall },
         { wall,floor,floor,floor,wall,floor,floor,wall,wall,wall,wall,wall,wall,wall,wall },
         { wall,floor,floor,floor,floor,floor,floor,wall,wall,wall,wall,wall,wall,wall,wall },
@@ -58,6 +58,7 @@ public class playerHomeMapScene : SceneBase
         {
             GoTo(context, SceneKey.LabyrinthVillage);
         }
+        
         else if (playerHomeMap[moveY, moveX] != wall)
         {
             playerY = moveY;

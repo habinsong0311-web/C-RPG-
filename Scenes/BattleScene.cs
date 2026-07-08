@@ -40,6 +40,7 @@ public class BattleScene : SceneBase
             Console.WriteLine("전투에서 승리하였습니다");
             context.Player.Exp += enemy.Exp;
             context.PlayerLevelUp();
+            context.Game.AddItem(enemy.HasItem);
             Console.WriteLine("아무 키나 누르면 돌아갑니다...");
             Console.ReadKey();
             context.Game.PopScene();

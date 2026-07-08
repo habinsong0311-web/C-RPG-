@@ -94,4 +94,13 @@ public class Character
             Mp = MaxMp;
         }
     }
+    public void LoadStatus(int hp, int maxHp, int mp, int maxMp, int attack, int defense)
+    {
+        Hp = hp;
+        MaxHp = maxHp;
+        Mp = mp;
+        MaxMp = maxMp;
+        Attack = attack;
+        Defense = defense;
+    }
 }

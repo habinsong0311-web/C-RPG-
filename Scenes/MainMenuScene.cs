@@ -50,15 +50,23 @@ public class MainMenu : SceneBase
                     break;
                 case 3:
                     //세이브 이동
+                    SaveManager.Save(context);
+                    Console.WriteLine("저장되었습니다.");
+                    Console.ReadKey(true);
                     break;
                 case 4:
-                    //로드 이동
+                    SaveManager.LoadToGame(context);
+                    Console.WriteLine("로드되었습니다.");
+                    Console.ReadKey(true);
+                    context.Game.ChangeScene(SceneKey.playerHomeMap);
+
+                    Console.ReadKey(true);
                     break;
                 case 5:
                     //설정 이동
                     break;
                 case 9:
-                    //게임종료 이동
+                    context.Game.RequestQuit();
                     break;
             }
     }

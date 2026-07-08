@@ -344,6 +344,12 @@ public class GameManager
 
         return;
     }
+    public void ClearEquipment()
+    {
+        EquippedWeapon = null;
+        EquippedShield = null;
+        EquippedArmor = null;
+    }
 
 }
 

@@ -83,6 +83,41 @@ public class CrudeSword : Loot
         SellMoney = 40;
     }
 }
+public class DevilHorns : Loot
+{
+    public DevilHorns() : base("악마의뿔", TYPE.전리품, "작은 악마의 뿔이다 상점에 팔면 돈을 준다")
+    {
+        SellMoney = 80;
+    }
+}
+public class GolemCore : Loot
+{
+    public GolemCore() : base("골램의핵", TYPE.전리품, "골램의핵이다 상점에 팔면 돈을 준다")
+    {
+        SellMoney = 300;
+    }
+}
+public class OrcFang : Loot
+{
+    public OrcFang() : base("오크의어금니", TYPE.전리품, "오크의 어금니이다 상점에 팔면 돈을 준다")
+    {
+        SellMoney = 100;
+    }
+}
+public class GargoyleClaw : Loot
+{
+    public GargoyleClaw() : base("가고일의 발톱", TYPE.전리품, "단단한 가고일의 발톱이다 상점에 팔면 돈을 준다")
+    {
+        SellMoney = 120;
+    }
+}
+public class SpiritStone : Loot
+{
+    public SpiritStone() : base("정령석", TYPE.전리품, "정령의힘을 머금은 돌이다 상점에 팔면 돈을 준다")
+    {
+        SellMoney = 150;
+    }
+}
 public class WoodSword : Item
 {
     public WoodSword() : base("나무 검", TYPE.한손검, 0, 0, 10, 0, "나무로 만든 낡은 나무 검이다\n착용시 공격력이 10증가한다")

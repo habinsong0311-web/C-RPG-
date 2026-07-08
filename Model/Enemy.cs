@@ -58,6 +58,7 @@ public class LittleDevil : Enemy
 {
 	public LittleDevil() : base("꼬마 악마", 100,50,40,25)
 	{
+        HasItem = new DevilHorns();
 		Exp = 20;
 	}
 }
@@ -65,6 +66,7 @@ public class GatekeeperGolem : Enemy
 {
 	public GatekeeperGolem() : base("수문장골렘", 300, 0, 30, 40)
 	{
+        HasItem = new GolemCore();
 		Exp = 35;
 	}
 }
@@ -72,6 +74,7 @@ public class Orc : Enemy
 {
     public Orc() : base("오크",120,20,25,20)
 	{
+        HasItem = new OrcFang();
         Exp = 15;
     }
 }
@@ -79,6 +82,7 @@ public class Gargoyle : Enemy
 {
 	public Gargoyle() : base("가고일",150 ,0,20,30)
 	{
+        HasItem = new GargoyleClaw();
 		Exp = 20;
 	}
 }
@@ -86,6 +90,7 @@ public class WaterSpirit : Enemy
 {
 	public WaterSpirit() : base("물의정령",100,100,20,20)
 	{
+        HasItem = new SpiritStone();
         Exp = 25;
     }
 }

@@ -19,13 +19,16 @@ public class MapRenderer
                     switch (map[Y, X])
                     {
                         case wall:
-                            Console.Write("#");
+                            Console.Write("▣");
                             break;
                         case floor:
                             Console.Write(" ");
                             break;
                         case door:
-                            Console.Write("D");
+                            Console.Write("▥");
+                            break;
+                        case bed:
+                            Console.Write("▤ ");
                             break;
                         case fenceA:
                             Console.Write("ㅣ");
