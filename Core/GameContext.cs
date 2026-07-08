@@ -73,7 +73,6 @@ public class GameContext
         Console.WriteLine($"공격력:{Player.Attack} 방어력:{Player.Defense}");
         Console.WriteLine($"소지금:{Player.Money}원");
     }
-    
 
 
 }

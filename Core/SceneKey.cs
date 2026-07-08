@@ -16,6 +16,7 @@ public enum SceneKey
     CharacterCreation,
     MainMenu,
     inventory,
-    Equipment
+    Equipment,
+    LabyrinthVillage
 
 }

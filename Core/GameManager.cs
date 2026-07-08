@@ -51,6 +51,7 @@ public class GameManager
         AddScene(new MainMenu());
         AddScene(new inventoryScene());
         AddScene(new Equipment());
+        AddScene(new LabyrinthVillageScene());
 
 
 

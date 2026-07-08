@@ -27,6 +27,13 @@ public class MapRenderer
                         case door:
                             Console.Write("D");
                             break;
+                        case fenceA:
+                            Console.Write("ㅣ");
+                            break;
+                        case fenceB:
+                            Console.Write("ㅡ");
+                            break;
+
                     }
 
                 }
