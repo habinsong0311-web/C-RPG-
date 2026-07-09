@@ -15,11 +15,6 @@ public class CharacterCreationScene : SceneBase
     public override SceneKey Key => SceneKey.CharacterCreation;
     public override void Render(GameContext context)
     {
-        context.Game.AddEquipment(new WoodSword());
-        context.Game.AddEquipment(new WoodShield());
-        context.Game.AddEquipment(new ClothClothes());
-        context.Game.RemoveEquipment(new ClothClothes());
-        //임시
         Console.Clear();
         ConsoleUI.WriteBox(new[]
         {

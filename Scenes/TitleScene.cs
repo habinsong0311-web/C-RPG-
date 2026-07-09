@@ -25,8 +25,8 @@ public class TitleScene : SceneBase
 
         ConsoleUI.WriteBox(new[]
         {
-            " "
-        }, "프로젝트 안내", ConsoleColor.DarkCyan);
+            "1.0"
+        }, "버전", ConsoleColor.DarkCyan);
 
         ConsoleUI.WriteMenu(Menu, "시작 메뉴");
     }

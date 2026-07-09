@@ -39,14 +39,11 @@ public class MainMenu : SceneBase
                 case 1:
                     context.Game.PushScene(SceneKey.inventory);
                     return;
-                    //인벤토리 이동
                 case 2:
                     context.Game.PushScene(SceneKey.Equipment);
                     return;
-                    //장비창 이동
                     break;
                 case 3:
-                    //세이브 이동
                     SaveManager.Save(context);
                     Console.WriteLine("저장되었습니다.");
                     Console.ReadKey(true);

@@ -92,11 +92,10 @@ public class GameManager
         }
 
         ConsoleUI.Clear();
-        ConsoleUI.WriteTitle("프로그램 종료", "수고하셨습니다.");
+        ConsoleUI.WriteTitle("게임 종료", "수고하셨습니다.");
         ConsoleUI.WriteBox(new[]
         {
-            "C# 콘솔 게임 프레임워크가 종료되었습니다.",
-            "Core, UI, Scenes 구조를 기준으로 기능을 확장할 수 있습니다."
+            "미궁RPG가 종료되었습니다.",
         }, "Good Bye", ConsoleColor.DarkCyan);
         ConsoleUI.Present();
     }
@@ -191,7 +190,9 @@ public class GameManager
         {
             Console.WriteLine("================================");
             Console.WriteLine("사용하시겠습니까?\n1.Yes / 2.NO");
+
             string inputA = Console.ReadLine();
+
             if (inputA == "1")
             {
                 if (item.Name == "HP포션")
@@ -205,70 +206,57 @@ public class GameManager
                     Context.Player.UseMpPotion();
                 }
             }
-            else if (item.Type == TYPE.기타)
+
+            return;
+        }
+        else if (item.Type == TYPE.기타 || item.Type == TYPE.전리품)
+        {
+            Console.WriteLine("================================");
+            Console.ReadKey(true);
+            return;
+        }
+        else
+        {
+            Console.WriteLine("================================");
+            Console.WriteLine("착용하시겠습니까?\n1.Yes / 2.NO");
+
+            string input = Console.ReadLine();
+
+            if (input == "1")
             {
-                Console.WriteLine("================================");
-            }
-            else
-            {
-                Console.WriteLine("================================");
-                Console.WriteLine("착용하시겠습니까?\n1.Yes / 2.NO");
-                string input = Console.ReadLine();
-                if (input == "1")
+                if (item.Type == TYPE.방패)
                 {
-                    if (item.Type == TYPE.방패)
-                    {
-                        if (EquippedShield != null)
-                        {
-                            SwapEquipment(EquippedShield, item);
-                        }
-                        else if (EquippedShield == null)
-                        {
-                            AddEquipment(item);
-                            Context.Player.ItemStatusUp(item);
-                            RemoveItem(item);
-                        }
-                    }
-                    else if (item.Type == TYPE.옷)
-                    {
-                        if (EquippedArmor != null)
-                        {
-
-                            SwapEquipment(EquippedArmor, item);
-                        }
-                        else if (EquippedArmor == null)
-                        {
-                            AddEquipment(item);
-                            Context.Player.ItemStatusUp(item);
-                            RemoveItem(item);
-                        }
-
-                    }
+                    if (EquippedShield != null)
+                        SwapEquipment(EquippedShield, item);
                     else
                     {
-                        if (EquippedWeapon != null)
-                        {
-                            SwapEquipment(EquippedWeapon, item);
-                        }
-                        else if (EquippedWeapon == null)
-                        {
-                            AddEquipment(item);
-                            Context.Player.ItemStatusUp(item);
-                            RemoveItem(item);
-                        }
-
+                        AddEquipment(item);
+                        Context.Player.ItemStatusUp(item);
+                        RemoveItem(item);
                     }
-                    return;
                 }
-                else if (input == "2")
+                else if (item.Type == TYPE.옷)
                 {
-                    Console.ReadKey();
+                    if (EquippedArmor != null)
+                        SwapEquipment(EquippedArmor, item);
+                    else
+                    {
+                        AddEquipment(item);
+                        Context.Player.ItemStatusUp(item);
+                        RemoveItem(item);
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("잘못 입력된 키입니다");
+                    if (EquippedWeapon != null)
+                        SwapEquipment(EquippedWeapon, item);
+                    else
+                    {
+                        AddEquipment(item);
+                        Context.Player.ItemStatusUp(item);
+                        RemoveItem(item);
+                    }
                 }
-
             }
         }
     }

@@ -16,7 +16,7 @@ public class ShopchoiceScene : SceneBase
     {
         Console.Clear();
         ConsoleUI.WriteTitle("상점", "X키 입력으로 되돌아가기");
-        ConsoleUI.WriteMenu(mainMenu, "메뉴 선택");
+        ConsoleUI.WriteMenu(mainMenu, "상점 선택");
     }
     public override void HandleInput(GameContext context)
     {
