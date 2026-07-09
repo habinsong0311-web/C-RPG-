@@ -21,11 +21,14 @@ public class MapRenderer
                         case wall:
                             Console.Write("▣");
                             break;
+                        case shop:
+                            Console.Write("S");
+                            break;
                         case floor:
                             Console.Write(" ");
                             break;
                         case door:
-                            Console.Write("▥");
+                            Console.Write("D");
                             break;
                         case bed:
                             Console.Write("▤ ");

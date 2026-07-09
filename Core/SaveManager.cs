@@ -93,30 +93,18 @@ public static class SaveManager
 
         foreach (string itemName in data.InventoryItemNames)
         {
-            context.Game.AddItem(CreateItemByName(itemName));
+            context.Game.AddItem(ItemFactory.Create(itemName));
         }
 
         if (data.EquippedWeaponName != null)
-            context.Game.AddEquipment(CreateItemByName(data.EquippedWeaponName));
+            context.Game.AddEquipment(ItemFactory.Create(data.EquippedWeaponName));
 
         if (data.EquippedShieldName != null)
-            context.Game.AddEquipment(CreateItemByName(data.EquippedShieldName));
+            context.Game.AddEquipment(ItemFactory.Create(data.EquippedShieldName));
 
         if (data.EquippedArmorName != null)
-            context.Game.AddEquipment(CreateItemByName(data.EquippedArmorName));
+            context.Game.AddEquipment(ItemFactory.Create(data.EquippedArmorName));
     }
 
-    private static Item CreateItemByName(string name)
-    {
-        return name switch
-        {
-            "나무 검" => new WoodSword(),
-            "나무 단검" => new WoodDagger(),
-            "나무 방패" => new WoodShield(),
-            "천 옷" => new ClothClothes(),
-            "HP포션" => new HpPotion(),
-            "MP포션" => new MpPotion(),
-            _ => throw new Exception($"알 수 없는 아이템: {name}")
-        };
-    }
+    
 }

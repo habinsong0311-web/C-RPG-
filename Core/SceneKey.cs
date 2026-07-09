@@ -28,6 +28,10 @@ public enum SceneKey
     Labyrinth8FScene,
     Labyrinth9FScene,
     Labyrinth10FScene,
+    EquipmentShop,
+    ConsumablesShop,
+    SellShop,
+
 
 
 }

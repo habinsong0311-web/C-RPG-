@@ -46,7 +46,7 @@ public class GameContext
     /// false가 되면 프로그램이 종료됩니다.
     /// </summary>
     public bool IsRunning { get; set; } = true;
-
+   
     /// <summary>
     /// 최근 로그를 추가합니다. 로그가 너무 길어지지 않도록 오래된 로그는 제거합니다.
     /// </summary>

@@ -23,7 +23,7 @@ public class TitleScene : SceneBase
     public override void Render(GameContext context)
     {
         ConsoleUI.Clear();
-        ConsoleUI.WriteTitle("CONSOLE GAME FRAMEWORK", "RPG");
+        ConsoleUI.WriteTitle("미궁 던전", "RPG");
 
         ConsoleUI.WriteBox(new[]
         {

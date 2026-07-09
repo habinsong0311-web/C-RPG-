@@ -10,7 +10,7 @@ public class LabyrinthVillageScene : SceneBase
     private MapTileType[,] LabyrinthVillageMap =
     {
         { wall,wall,wall,wall,wall,wall,wall,LabyrinthIngress,wall,wall,wall,wall,wall,wall,wall },
-        {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
+        {wall,shop,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
         {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
         {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
         {wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },

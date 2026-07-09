@@ -25,7 +25,9 @@ public enum MapTileType
     gatekeeperGolem,//수문장골렘
     dragon,//드레곤
     door,//문 또는 입구
-    bed//침대
+    bed,//침대
+    shop//상점
+
 }
 
 

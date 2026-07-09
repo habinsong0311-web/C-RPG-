@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using ConsoleGameFramework.Models;
+﻿using ConsoleGameFramework.Core;
 
 public class SaveData
 {
@@ -18,6 +17,7 @@ public class SaveData
 
     public int Attack { get; set; }
     public int Defense { get; set; }
+
 
     public List<string> InventoryItemNames { get; set; } = new();
 
