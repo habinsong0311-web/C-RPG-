@@ -7,23 +7,30 @@ using System.Text;
 public class EquipmentShopScene : SceneBase
 {
     public override SceneKey Key => SceneKey.LabyrinthVillage;
+    private readonly List<Item> shopItems = new()
+    {
+        new IronSword(),
+        new MithrilSword(),
+        new IronShield(),
+        new IronDagger(),
+        new MithrilDagger(),
+        new OldTreewand(),
+        new StaffOfTheArchmage(),
+        new LeatherClothes(),
+        new MageRobe(),
+        new IronArmor()
+    };
     public override void Render(GameContext context)
     {
         Console.Clear();
         ConsoleUI.WriteTitle("상점", "X키 입력으로 되돌아가기");
-        List<MenuOption> buyMenu = new List<MenuOption>
+        List<MenuOption> buyMenu = new();
+
+        for (int i = 0; i < shopItems.Count; i++)
         {
-        new MenuOption(1, "철 검", $"{new IronSword().BuyMoney}G"),
-        new MenuOption(2, "미스릴 검", $"{new MithrilSword().BuyMoney}G"),
-        new MenuOption(3, "철 방패", $"{new IronShield().BuyMoney}G"),
-        new MenuOption(4, "철 단검", $"{new IronDagger().BuyMoney}G"),
-        new MenuOption(5, "미스릴 단검", $"{new MithrilDagger().BuyMoney}G"),
-        new MenuOption(6, "고목나무 완드", $"{new OldTreewand().BuyMoney}G"),
-        new MenuOption(7, "대마법사의 지팡이", $"{new StaffOfTheArchmage().BuyMoney}G"),
-        new MenuOption(8, "가죽 옷", $"{new LeatherClothes().BuyMoney}G"),
-        new MenuOption(9, "마법사의 로브", $"{new MageRobe().BuyMoney}G"),
-        new MenuOption(10, "철 갑옷", $"{new IronArmor().BuyMoney}G")
-        };
+            Item item = shopItems[i];
+            buyMenu.Add(new MenuOption(i + 1, item.Name, $"{item.BuyMoney}G"));
+        }
         ConsoleUI.WriteMenu(buyMenu, "구매 목록");
     }
     public override void HandleInput(GameContext context)
@@ -35,16 +42,29 @@ public class EquipmentShopScene : SceneBase
             return;
         }
         if (int.TryParse(input, out int choice))
-            switch (choice)
-            {
-                case 1:
-                    if (context.Player.Money > )
-                    {
-                        context.Game.AddItem(new IronSword());
-                    }
-                    return;
+        {
+            int index = choice - 1;
 
-                    //case 2:
+            if (index >= 0 && index < shopItems.Count)
+            {
+                Item item = shopItems[index];
+
+                if (context.Player.Money >= item.BuyMoney)
+                {
+                    context.Player.Money -= item.BuyMoney;
+                    context.Game.AddItem(ItemFactory.Create(item.Name));
+
+                    Console.WriteLine($"{item.Name}을(를) 구매했습니다.");
+                    Console.ReadKey(true);
+                }
+                else
+                {
+                    Console.WriteLine("돈이 부족합니다.");
+                    Console.ReadKey(true);
+                }
             }
+        }
     }
 }
+
+        

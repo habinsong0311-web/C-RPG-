@@ -62,6 +62,7 @@ public class GameManager
         AddScene(new Labyrinth8FScene());
         AddScene(new Labyrinth9FScene());
         AddScene(new Labyrinth10FScene());
+        AddScene(new Labyrinth10FScene());
         AddScene(new EquipmentShopScene());
         AddScene(new ConsumablesShop());
         AddScene(new SellShop());
