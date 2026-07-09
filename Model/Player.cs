@@ -12,12 +12,17 @@ public class Player : Character
 
     public int MaxExp { get; set; } = 5;
 
-    public int Money { get; set; } = 500;
+    public int Money{ get; set; } = 500;
 
     public Player(string name, int maxHp, int maxMp, int attack, int defense) : base(name, maxHp, maxMp,attack, defense)
 	{
 	}
+    public void AddMoney(int money)
+    {
+        Money += money;
+    }
 }
+
 public class Warrior : Player
 {
     public Warrior(string name) : base(name, 200, 50, 30, 30)

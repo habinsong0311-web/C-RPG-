@@ -14,7 +14,6 @@ public class MainMenu : SceneBase
         new MenuOption(2,"장비창",""),
         new MenuOption(3,"세이브",""),
         new MenuOption(4,"로드",""),
-        new MenuOption(5,"설정",""),
         new MenuOption(9, "게임종료", "")
     };
     public override void Render(GameContext context)
@@ -23,8 +22,6 @@ public class MainMenu : SceneBase
         ConsoleUI.WriteTitle("메인메뉴", "X키 입력으로 되돌아가기");
         context.PrintStat();
         ConsoleUI.WriteMenu(mainMenu, "메뉴 선택");
-
-
     }
     public override void HandleInput(GameContext context)
     {
@@ -61,9 +58,6 @@ public class MainMenu : SceneBase
                     context.Game.ChangeScene(SceneKey.playerHomeMap);
 
                     Console.ReadKey(true);
-                    break;
-                case 5:
-                    //설정 이동
                     break;
                 case 9:
                     context.Game.RequestQuit();

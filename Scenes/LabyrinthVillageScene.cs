@@ -59,6 +59,10 @@ public class LabyrinthVillageScene : SceneBase
         {
             GoTo(context, SceneKey.Labyrinth1FScene);
         }
+        else if (LabyrinthVillageMap[moveY, moveX] == shop)
+        {
+            context.Game.PushScene(SceneKey.Shopchoice);
+        }
         else if (LabyrinthVillageMap[moveY, moveX] != wall)
         {
             playerY = moveY;

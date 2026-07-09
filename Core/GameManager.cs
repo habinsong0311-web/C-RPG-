@@ -62,10 +62,10 @@ public class GameManager
         AddScene(new Labyrinth8FScene());
         AddScene(new Labyrinth9FScene());
         AddScene(new Labyrinth10FScene());
-        AddScene(new Labyrinth10FScene());
+        AddScene(new ShopchoiceScene());
         AddScene(new EquipmentShopScene());
-        AddScene(new ConsumablesShop());
-        AddScene(new SellShop());
+        AddScene(new ConsumablesShopScene());
+        AddScene(new SellShopScene());
 
 
 
@@ -158,9 +158,26 @@ public class GameManager
     {
         inventory.Remove(item);
     }
-
-    //ItemEquipment
-    //RemoveEquipment
+    public void SellItem(Item item)
+    {
+        Console.WriteLine("================================");
+        Console.WriteLine($"아이템을 {item.SellMoney}원에 판매하시겠습니까?\n1.Yes / 2.NO");
+        string inputA = Console.ReadLine();
+        if (inputA == "1")
+        {
+            Context.Player.AddMoney(item.SellMoney);
+            RemoveItem(item);
+        }
+        else if (inputA == "2")
+        {
+            Console.ReadKey();
+        }
+        else
+        {
+            Console.WriteLine("잘못 입력된 키입니다");
+        }
+    }
+    
     public void PrintItem(Item item)
     {
         Console.WriteLine($"{item.Name} / 타입 : {item.Type}");

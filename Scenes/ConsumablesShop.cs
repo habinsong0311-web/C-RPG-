@@ -4,26 +4,18 @@ using ConsoleGameFramework.UI;
 using System.Data.SqlTypes;
 using System.Text;
 
-public class EquipmentShopScene : SceneBase
+public class ConsumablesShopScene : SceneBase
 {
-    public override SceneKey Key => SceneKey.EquipmentShop;
+    public override SceneKey Key => SceneKey.ConsumablesShop;
     private readonly List<Item> shopItems = new()
     {
-        new IronSword(),
-        new MithrilSword(),
-        new IronShield(),
-        new IronDagger(),
-        new MithrilDagger(),
-        new OldTreewand(),
-        new StaffOfTheArchmage(),
-        new LeatherClothes(),
-        new MageRobe(),
-        new IronArmor()
+        new HpPotion(),
+        new MpPotion(),
     };
     public override void Render(GameContext context)
     {
         Console.Clear();
-        ConsoleUI.WriteTitle("장비 구매", "X키 입력으로 되돌아가기");
+        ConsoleUI.WriteTitle("소모품 구매", "X키 입력으로 되돌아가기");
         List<MenuOption> buyMenu = new();
 
         for (int i = 0; i < shopItems.Count; i++)
@@ -67,4 +59,7 @@ public class EquipmentShopScene : SceneBase
     }
 }
 
-        
+
+
+
+

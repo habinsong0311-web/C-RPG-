@@ -31,7 +31,7 @@ public enum SceneKey
     EquipmentShop,
     ConsumablesShop,
     SellShop,
-
+    Shopchoice
 
 
 }
