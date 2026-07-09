@@ -7,9 +7,24 @@ using static ConsoleGameFramework.Models.MapTileType;
 public class Labyrinth4FScene : SceneBase
 {
     public override SceneKey Key => SceneKey.Labyrinth4FScene;
-    private MapTileType[,] Labyrinth4FSceneMap = OriginalLabyrinthMapData.Labyrinth4FMap;
-    private int playerX = 7;
-    private int playerY = 13;
+    private readonly MapTileType[,] originalMap = OriginalLabyrinthMapData.Labyrinth4FMap;
+    private MapTileType[,] Labyrinth4FSceneMap;
+
+    public Labyrinth4FScene()
+    {
+        Labyrinth4FSceneMap = (MapTileType[,])originalMap.Clone();
+    }
+
+    public override void Enter(GameContext context)
+    {
+        if (context.IsMonsterDefeated && context.BattleMapKey == Key)
+        {
+            Labyrinth4FSceneMap[context.BattleMonsterY, context.BattleMonsterX] = floor;
+            context.IsMonsterDefeated = false;
+        }
+    }
+    private int playerX = 3;
+    private int playerY = 18;
     public override void Render(GameContext context)
     {
         Console.Clear();
@@ -36,15 +51,22 @@ public class Labyrinth4FScene : SceneBase
         }
         if (Labyrinth4FSceneMap[moveY, moveX] == goblinMage)
         {
+            context.BattleMapKey = Key;
+            context.BattleMonsterY = moveY;
+            context.BattleMonsterX = moveX;
+
             BattleManager.Instance.StartBattle(new GoblinMage());
             context.Game.PushScene(SceneKey.Battle);
+            return;
         }
         else if (Labyrinth4FSceneMap[moveY, moveX] == Down)
         {
+            Labyrinth4FSceneMap = (MapTileType[,])originalMap.Clone();
             GoTo(context, SceneKey.Labyrinth5FScene);
         }
         else if (Labyrinth4FSceneMap[moveY, moveX] == Up)
         {
+            Labyrinth4FSceneMap = (MapTileType[,])originalMap.Clone();
             GoTo(context, SceneKey.Labyrinth3FScene);
         }
         else if (Labyrinth4FSceneMap[moveY, moveX] != wall)

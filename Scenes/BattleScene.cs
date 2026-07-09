@@ -13,7 +13,7 @@ public class BattleScene : SceneBase
         new MenuOption(2, "스킬1","아직 미구현."),
         new MenuOption(3, "스킬2","아직 미구현."),
         new MenuOption(4, "테스트","데미지 0으로 공격."),
-        new MenuOption(0, "포기하고 종료")
+        new MenuOption(0, "도망가기")
     };
     
 
@@ -41,6 +41,7 @@ public class BattleScene : SceneBase
             context.Player.Exp += enemy.Exp;
             context.PlayerLevelUp();
             context.Game.AddItem(enemy.HasItem);
+            context.IsMonsterDefeated = true;
             Console.WriteLine("아무 키나 누르면 돌아갑니다...");
             Console.ReadKey();
             context.Game.PopScene();
@@ -71,7 +72,9 @@ public class BattleScene : SceneBase
                 context.AddLog($"{context.Player.Name}의 일반공격! {test}의 피해를 입혔습니다");
                 break;
             case 0:
-                context.Game.RequestQuit();
+                Console.WriteLine("도망에 성공했습니다!");
+                Console.ReadLine();
+                context.Game.PopScene();
                 break;
         }
         if(0 < enemy.Hp)

@@ -59,6 +59,10 @@ public class GameContext
             Logs.RemoveAt(0);
         }
     }
+    public SceneKey BattleMapKey { get; set; }
+    public int BattleMonsterY { get; set; }
+    public int BattleMonsterX { get; set; }
+    public bool IsMonsterDefeated { get; set; }
     public Player? Player { get; set; }
     public void PrintStat()
     {

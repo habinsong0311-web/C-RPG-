@@ -7,9 +7,24 @@ using static ConsoleGameFramework.Models.MapTileType;
 public class Labyrinth9FScene : SceneBase
 {
     public override SceneKey Key => SceneKey.Labyrinth9FScene;
-    private MapTileType[,] Labyrinth9FSceneMap = OriginalLabyrinthMapData.Labyrinth9FMap;
-    private int playerX = 7;
-    private int playerY = 13;
+    private readonly MapTileType[,] originalMap = OriginalLabyrinthMapData.Labyrinth9FMap;
+    private MapTileType[,] Labyrinth9FSceneMap;
+
+    public Labyrinth9FScene()
+    {
+        Labyrinth9FSceneMap = (MapTileType[,])originalMap.Clone();
+    }
+
+    public override void Enter(GameContext context)
+    {
+        if (context.IsMonsterDefeated && context.BattleMapKey == Key)
+        {
+            Labyrinth9FSceneMap[context.BattleMonsterY, context.BattleMonsterX] = floor;
+            context.IsMonsterDefeated = false;
+        }
+    }
+    private int playerX = 3;
+    private int playerY = 18;
     public override void Render(GameContext context)
     {
         Console.Clear();
@@ -36,15 +51,21 @@ public class Labyrinth9FScene : SceneBase
         }
         if (Labyrinth9FSceneMap[moveY, moveX] == waterSpirit)
         {
+            context.BattleMapKey = Key;
+            context.BattleMonsterY = moveY;
+            context.BattleMonsterX = moveX;
             BattleManager.Instance.StartBattle(new WaterSpirit());
             context.Game.PushScene(SceneKey.Battle);
+            return;
         }
         else if (Labyrinth9FSceneMap[moveY, moveX] == Down)
         {
+            Labyrinth9FSceneMap = (MapTileType[,])originalMap.Clone();
             GoTo(context, SceneKey.Labyrinth10FScene);
         }
         else if (Labyrinth9FSceneMap[moveY, moveX] == Up)
         {
+            Labyrinth9FSceneMap = (MapTileType[,])originalMap.Clone();
             GoTo(context, SceneKey.Labyrinth8FScene);
         }
         else if (Labyrinth9FSceneMap[moveY, moveX] != wall)

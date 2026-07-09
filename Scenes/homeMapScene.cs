@@ -20,11 +20,11 @@ public class playerHomeMapScene : SceneBase
         { wall,floor,floor,floor,wall,floor,floor,wall,wall,wall,wall,wall,wall,wall,wall },
         { wall,floor,floor,floor,floor,floor,floor,wall,wall,wall,wall,wall,wall,wall,wall },
         { wall,floor,floor,floor,wall,floor,floor,wall,wall,wall,wall,wall,wall,wall,wall },
-        { wall,wall,wall,wall,wall,floor,floor,floor,floor,floor,fenceA,floor,floor,floor,wall },
-        { wall,floor,floor,floor,wall,floor,floor,floor,floor,floor,fenceA,floor,floor,floor,wall },
+        { wall,wall,wall,wall,wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
         { wall,floor,floor,floor,wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
-        { wall,floor,floor,floor,floor,floor,floor,floor,floor,floor ,fenceA,floor,floor,floor,wall},
-        { wall,floor,floor,floor,wall,floor,floor,floor,floor,floor,fenceA,floor,floor,floor,wall },
+        { wall,floor,floor,floor,wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
+        { wall,floor,floor,floor,floor,floor,floor,floor,floor,floor ,floor,floor,floor,floor,wall},
+        { wall,floor,floor,floor,wall,floor,floor,floor,floor,floor,floor,floor,floor,floor,wall },
         { wall,wall,wall,wall,wall,wall,door,door,wall,wall,wall,wall,wall,wall,wall },
         };
     private int playerX = 2;

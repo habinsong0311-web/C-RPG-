@@ -7,9 +7,24 @@ using static ConsoleGameFramework.Models.MapTileType;
 public class Labyrinth8FScene : SceneBase
 {
     public override SceneKey Key => SceneKey.Labyrinth8FScene;
-    private MapTileType[,] Labyrinth8FSceneMap = OriginalLabyrinthMapData.Labyrinth8FMap;
-    private int playerX = 7;
-    private int playerY = 13;
+    private readonly MapTileType[,] originalMap = OriginalLabyrinthMapData.Labyrinth8FMap;
+    private MapTileType[,] Labyrinth8FSceneMap;
+
+    public Labyrinth8FScene()
+    {
+        Labyrinth8FSceneMap = (MapTileType[,])originalMap.Clone();
+    }
+
+    public override void Enter(GameContext context)
+    {
+        if (context.IsMonsterDefeated && context.BattleMapKey == Key)
+        {
+            Labyrinth8FSceneMap[context.BattleMonsterY, context.BattleMonsterX] = floor;
+            context.IsMonsterDefeated = false;
+        }
+    }
+    private int playerX = 3;
+    private int playerY = 18;
     public override void Render(GameContext context)
     {
         Console.Clear();
@@ -36,15 +51,21 @@ public class Labyrinth8FScene : SceneBase
         }
         if (Labyrinth8FSceneMap[moveY, moveX] == gargoyle)
         {
+            context.BattleMapKey = Key;
+            context.BattleMonsterY = moveY;
+            context.BattleMonsterX = moveX;
             BattleManager.Instance.StartBattle(new Gargoyle());
             context.Game.PushScene(SceneKey.Battle);
+            return;
         }
         else if (Labyrinth8FSceneMap[moveY, moveX] == Down)
         {
+            Labyrinth8FSceneMap = (MapTileType[,])originalMap.Clone();
             GoTo(context, SceneKey.Labyrinth9FScene);
         }
         else if (Labyrinth8FSceneMap[moveY, moveX] == Up)
         {
+            Labyrinth8FSceneMap = (MapTileType[,])originalMap.Clone();
             GoTo(context, SceneKey.Labyrinth7FScene);
         }
         else if (Labyrinth8FSceneMap[moveY, moveX] != wall)
